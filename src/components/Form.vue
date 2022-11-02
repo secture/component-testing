@@ -1,31 +1,33 @@
 <template>
-  <header>
-      <Explanation :title="title" :subtitle="subtitle" />
-  </header>
-
-  <main>
-    <div class='row'>
-      <div class='column'>
-        <BaseInput label="Name" />
-      </div>
-      <div class='column'>
-        <BaseInput label="Surnames" />
-      </div>
-    </div>
+  <div class="form">
+    <header>
+        <Explanation :title="title" :subtitle="subtitle" />
+    </header>
   
-    <div class='row'>
-      <div class='column'>
-        <BaseInput label="Address" />
+    <main>
+      <div class='row'>
+        <div class='column'>
+          <BaseInput label="Name" />
+        </div>
+        <div class='column'>
+          <BaseInput label="Surnames" />
+        </div>
       </div>
-      <div class='column'>
-        <BaseInput label="Postal code" />
+    
+      <div class='row'>
+        <div class='column'>
+          <BaseInput label="Address" />
+        </div>
+        <div class='column'>
+          <BaseInput label="Accept conditions" type="checkbox" />
+        </div>
       </div>
-    </div>
-  </main>
-
-  <footer>
-    <BaseButton>Submit</BaseButton>
-  </footer>
+    </main>
+  
+    <footer>
+      <BaseButton>Submit</BaseButton>
+    </footer>
+  </div>
 </template>
 
 <script setup>
@@ -38,6 +40,10 @@ const subtitle = 'This form is created with testable components.';
 </script>
 
 <style scoped>
+  .form {
+    width: 700px;
+  }
+
   header {
     line-height: 1.5;
   }
@@ -50,20 +56,5 @@ const subtitle = 'This form is created with testable components.';
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-
-  .row {
-    display: flex;
-    flex-direction: row;
-    align-content: space-between;
-    flex-wrap: wrap;
-    width: 100%;
-  }
-
-  .column {
-    display: flex;
-    flex-direction: column;
-    flex-basis: 100%;
-    flex: 1;
   }
 </style>
