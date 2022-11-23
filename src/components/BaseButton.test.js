@@ -14,7 +14,8 @@ describe('BaseButton', () => {
 
     render(BaseButton, { props, slots });
     await fireEvent.click(screen.getByTestId('button-id'))
-    screen.debug(screen.getByText('button'));
+
     expect(onClick).toHaveBeenCalledTimes(1);
+    expect(screen.getByText(text)).toBeInTheDocument();
 })
 });
