@@ -25,7 +25,7 @@
     </main>
   
     <footer>
-      <BaseButton>Submit</BaseButton>
+      <BaseButton :onClick="click">Submit</BaseButton>
     </footer>
   </div>
 </template>
@@ -37,6 +37,10 @@ import BaseButton from './BaseButton.vue';
 
 const title = 'Testing Form';
 const subtitle = 'This form is created with testable components.';
+
+const click = () => {
+  return console.log('button clicked!');
+}
 </script>
 
 <style scoped>

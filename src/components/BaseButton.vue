@@ -2,7 +2,8 @@
   <button class="normal"
       :class="type"
       :disabled="disabled"
-      @click="callback($event)"
+      @click="onClick"
+      data-testid="button-id"
       >
         <slot></slot>
     </button>
@@ -17,13 +18,11 @@ export default {
     },
     type: {
       type: String,
-    }
+    },
+    onClick: {
+      type: Function,
+    },
   },
-  methods: {
-    callback(event) {
-      this.$emit("click", event);
-    }
-  }
 };
 </script>
 
