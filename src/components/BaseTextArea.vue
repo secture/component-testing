@@ -1,7 +1,7 @@
 <template>
     <label :id="id">{{ label }}</label>
     <textarea :id="id" :cols="cols" :rows="rows" :maxlength="maxLength" :minlength="minLength"
-        :placeholder="content"></textarea>
+        :placeholder="placeholder"></textarea>
 </template>
 
 <script>
@@ -13,7 +13,7 @@ export default {
         id: String,
         minLength: Number,
         maxLength: Number,
-        content: String,
+        placeholder: String,
         label: String
     }
 }
