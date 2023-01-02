@@ -1,5 +1,5 @@
 <template>
-  <progress-bar maxSteps="3" :step="stepNumber" />
+  <progress-bar :maxSteps="maxSteps" :step="stepNumber" />
   <div class="form">
     <header>
       <Explanation :title="title" :subtitle="subtitle" />
@@ -26,7 +26,10 @@
     </main>
 
     <footer>
-      <BaseButton :onClick="click">Next</BaseButton>
+      <div class="button-group">
+        <BaseButton :onClick="back">Back</BaseButton>
+        <BaseButton :onClick="click">Next</BaseButton>
+      </div>
     </footer>
   </div>
 </template>
@@ -42,15 +45,28 @@ const title = 'Testing Form';
 const subtitle = 'This form is created with testable components.';
 
 const stepNumber = ref(1)
+const maxSteps = 3
 const click = () => {
-  stepNumber.value++
+  if (stepNumber.value < maxSteps) {
+    stepNumber.value++
+  }
   return console.log('button clicked!');
+}
+
+const back = () => {
+  if (stepNumber.value > 1) {
+    stepNumber.value--
+  }
 }
 </script>
 
 <style scoped>
 .form {
   width: 700px;
+}
+
+.button-group {
+  margin: 23px;
 }
 
 header {
