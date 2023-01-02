@@ -28,7 +28,8 @@
     <footer>
       <div class="button-group">
         <BaseButton :onClick="back">Back</BaseButton>
-        <BaseButton :onClick="click">Next</BaseButton>
+        <BaseButton v-if="maxSteps > stepNumber" :onClick="next">Next</BaseButton>
+        <BaseButton v-else :onClick="submit">Submit</BaseButton>
       </div>
     </footer>
   </div>
@@ -46,17 +47,20 @@ const subtitle = 'This form is created with testable components.';
 
 const stepNumber = ref(1)
 const maxSteps = 3
-const click = () => {
+const next = () => {
   if (stepNumber.value < maxSteps) {
     stepNumber.value++
   }
-  return console.log('button clicked!');
 }
 
 const back = () => {
   if (stepNumber.value > 1) {
     stepNumber.value--
   }
+}
+
+const submit = () => {
+  alert("Form Submitted")
 }
 </script>
 
@@ -65,8 +69,8 @@ const back = () => {
   width: 700px;
 }
 
-.button-group {
-  margin: 23px;
+.button-group * {
+  margin-left: 23px;
 }
 
 header {
