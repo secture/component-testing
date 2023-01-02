@@ -27,7 +27,7 @@
 
     <footer>
       <div class="button-group">
-        <BaseButton :onClick="back">Back</BaseButton>
+        <BaseButton v-if="stepNumber > 1" :onClick="back">Back</BaseButton>
         <BaseButton v-if="maxSteps > stepNumber" :onClick="next">Next</BaseButton>
         <BaseButton v-else :onClick="submit">Submit</BaseButton>
       </div>
