@@ -7,7 +7,9 @@
 
 
     <keep-alive>
-      <component :is="stepComponent" />
+      <FirstStep v-model:firstStepData="firstStepData" v-if="stepNumber == 1" />
+      <SecondStep v-model:secondStepData="secondStepData" v-else-if="stepNumber == 2" />
+      <ThirdStep v-model:thirdStepData="thirdStepData" v-else-if="stepNumber == 3" />
     </keep-alive>
 
     <footer>
@@ -27,10 +29,29 @@ import ProgressBar from './ProgressBar.vue';
 import FirstStep from './Form/FirstStep.vue';
 import SecondStep from "./Form/SecondStep.vue"
 import ThirdStep from './Form/ThirdStep.vue';
-import { computed, ref } from 'vue';
+import { ref } from 'vue';
 
 const title = 'Testing Form';
 const subtitle = 'This form is created with testable components.';
+
+const firstStepData = ref({
+  name: "",
+  surname: "",
+  address: "",
+  conditions: ""
+})
+
+const secondStepData = ref({
+  username: "",
+  email: ""
+})
+
+const thirdStepData = ref({
+  password: ""
+})
+
+const formData = ref({})
+
 
 const stepNumber = ref(1)
 const maxSteps = 3
@@ -47,21 +68,18 @@ const back = () => {
 }
 
 const submit = () => {
-  alert("Form Submitted")
+  //recoger todos los step en uno
+
+  formData.value = {
+    ...firstStepData.value,
+    ...secondStepData.value,
+    ...thirdStepData.value
+  }
+
+  console.log(formData.value);
+
 }
 
-const stepComponent = computed(() => {
-  switch (stepNumber.value) {
-    case 1:
-      return FirstStep
-    case 2:
-      return SecondStep
-    case 3:
-      return ThirdStep
-    default:
-      return new Error('COMPONENT_NOT_FOUND')
-  }
-})
 </script>
 
 <style scoped>
